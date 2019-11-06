@@ -7,6 +7,7 @@ public class PlayerDetection : MonoBehaviour
     public float requiredDetectionTime = 1.5f;
     public GameObject focusedObject = null;
 
+    private DetectionRing detectionRing;
     private float startTime;
     private bool tracking;
     private float focusTimeCounter;
@@ -15,6 +16,7 @@ public class PlayerDetection : MonoBehaviour
     private void Start()
     {
         startTime = Time.time;
+        detectionRing = GetComponent<DetectionRing>();
     }
 
     private void Update()
@@ -43,10 +45,13 @@ public class PlayerDetection : MonoBehaviour
 
     private IEnumerator FocusTracker(GameObject objectToTrack)
     {
+        detectionRing.ToggleRingEnabled();
         tracking = true;
         while (focusedObject == objectToTrack && !focusedObjectCollected)
         {
             focusTimeCounter += Time.deltaTime;
+
+            detectionRing.UpdateRingFill(focusTimeCounter / requiredDetectionTime);
 
             if (focusTimeCounter > requiredDetectionTime && !focusedObjectCollected)
             {
@@ -57,7 +62,8 @@ public class PlayerDetection : MonoBehaviour
             }
             yield return null;
         }
-
+        detectionRing.UpdateRingFill(0);
+        detectionRing.ToggleRingEnabled();
         focusedObjectCollected = false;
         focusTimeCounter = 0;
         tracking = false;
