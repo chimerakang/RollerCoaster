@@ -5,7 +5,7 @@ using PathCreation.Examples;
 
 public class DelayCoasterStart : MonoBehaviour
 {
-    public int delay = 10;
+    public int delay = 5;
 
     private void Start()
     {

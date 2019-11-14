@@ -15,12 +15,12 @@ namespace PathCreation.Examples {
         public Material undersideMaterial;
         public float textureTiling = 1;
 
-        //[SerializeField, HideInInspector]
-        public GameObject meshHolder;
+        [SerializeField, HideInInspector]
+        GameObject meshHolder;
 
         MeshFilter meshFilter;
-        public MeshRenderer meshRenderer;
-        public Mesh mesh;
+        MeshRenderer meshRenderer;
+        Mesh mesh;
 
         protected override void PathUpdated () {
             if (pathCreator != null) {
