@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -18,5 +20,16 @@ public class GameManager : MonoBehaviour
     {
         int totalScore = score + scoreToAdd;
         scoreText.text = totalScore.ToString();
+    }
+
+    public void TriggerEndGameRoutine()
+    {
+        StartCoroutine(EndGame());
+    }
+
+    private IEnumerator EndGame()
+    {
+        GameObject.FindGameObjectWithTag("EndGameText").GetComponent<TextMeshProUGUI>().text = "You collected " + score.ToString() + " coins!";
+        yield return null;
     }
 }

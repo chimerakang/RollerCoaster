@@ -9,6 +9,12 @@ public class Coin : MonoBehaviour, I_Interactable
         Collected();
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+            Collected();
+    }
+
     private void Collected()
     {
         FindObjectOfType<GameManager>().AddToScore(1);
