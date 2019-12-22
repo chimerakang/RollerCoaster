@@ -19,7 +19,8 @@ public class Coin : MonoBehaviour, I_Interactable
     {
         FindObjectOfType<GameManager>().AddToScore(1);
         FindObjectOfType<GameManager>().UpdateScoreText(1);
+        FindObjectOfType<CoinCollectSound>().PlayCollectSound();
         print("Coin collected.");
-        Destroy(this.gameObject);
+        Destroy(this.gameObject); 
     }
 }
