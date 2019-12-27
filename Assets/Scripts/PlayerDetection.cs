@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour
 {
-    public float requiredDetectionTime = 1.5f;
+    public float requiredDetectionTime = .5f;
     public GameObject focusedObject = null;
 
     private DetectionRing detectionRing;
@@ -45,13 +45,13 @@ public class PlayerDetection : MonoBehaviour
 
     private IEnumerator FocusTracker(GameObject objectToTrack)
     {
-        detectionRing.ToggleRingEnabled();
+        //detectionRing.ToggleRingEnabled();
         tracking = true;
         while (focusedObject == objectToTrack && !focusedObjectCollected)
         {
             focusTimeCounter += Time.deltaTime;
 
-            detectionRing.UpdateRingFill(focusTimeCounter / requiredDetectionTime);
+           // detectionRing.UpdateRingFill(focusTimeCounter / requiredDetectionTime);
 
             if (focusTimeCounter > requiredDetectionTime && !focusedObjectCollected)
             {
@@ -62,8 +62,8 @@ public class PlayerDetection : MonoBehaviour
             }
             yield return null;
         }
-        detectionRing.UpdateRingFill(0);
-        detectionRing.ToggleRingEnabled();
+        //detectionRing.UpdateRingFill(0);
+        //detectionRing.ToggleRingEnabled();
         focusedObjectCollected = false;
         focusTimeCounter = 0;
         tracking = false;
