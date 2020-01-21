@@ -8,12 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 5c2d0d66f4b2e5a419227af41b786b77
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/CityScene.unity
     guid: 1a4e37fe1d5bcef448eaacca8ef81fad
-  - enabled: 1
-    path: Assets/__TacticalUI/Scenes/DemoScene_ClassMenu.unity
-    guid: 4bac9ca8baec5424686d78993cd07e59
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e59d5765360bc8a46aead3bf4b6b5a75,
       type: 2}

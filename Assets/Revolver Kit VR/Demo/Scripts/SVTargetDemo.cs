@@ -35,7 +35,7 @@ public class SVTargetDemo : SVShootable {
 			this.transform.localRotation = Quaternion.Lerp (this.transform.localRotation, targetRotation, 0.15f);
 			yield return null;
 		}
-		yield return new WaitForSeconds (5);
+		yield return new WaitForSeconds (1);
 
 		while ( Quaternion.Angle(this.transform.localRotation, originalRotation) > 0.01f) {
 
@@ -44,11 +44,9 @@ public class SVTargetDemo : SVShootable {
 		}
 		isRotating = false;
 
-        FindObjectOfType<GameManager>().AddToScore(1);
-        FindObjectOfType<GameManager>().UpdateScoreText(1);
-        ///FindObjectOfType<CoinCollectSound>().PlayCollectSound();
-        ///print("Coin collected.");
-        Destroy(this.gameObject);
+		FindObjectOfType<GameManager>().AddToScore(1);
+		FindObjectOfType<GameManager>().UpdateScoreText(1);
+		Destroy(this.gameObject);
 
-    }
+	}
 }

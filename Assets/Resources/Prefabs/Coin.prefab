@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 6053753385420372213}
   - component: {fileID: 6053753385420372219}
   - component: {fileID: 6053753385420372212}
+  - component: {fileID: 8903748494224942505}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -236,6 +237,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8903748494224942505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053753385420372214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fbb1efbee33d14db4f9fdd591a5c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletHitSoundEffect: {fileID: 8300000, guid: 8a286920f14e8ba4c89051782e499246,
+    type: 3}
+  minPitch: 0.8
+  maxPitch: 1.2
+  volume: 1
 --- !u!1 &7248126515455894920
 GameObject:
   m_ObjectHideFlags: 0
