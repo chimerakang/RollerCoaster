@@ -4744,6 +4744,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1738378566}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &133330707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133330706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1
+  fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
+  fadeOnStart: 1
+  renderQueue: 5000
 --- !u!114 &133330709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28225,6 +28241,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1738378566}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &901845313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901845311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1
+  fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
+  fadeOnStart: 1
+  renderQueue: 5000
 --- !u!114 &901845315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28580,7 +28612,6 @@ GameObject:
   - component: {fileID: 927157980}
   - component: {fileID: 927157979}
   - component: {fileID: 927157981}
-  - component: {fileID: 927157982}
   m_Layer: 0
   m_Name: EndingTrigger
   m_TagString: Untagged
@@ -28645,20 +28676,10 @@ MonoBehaviour:
   fadeOnStart: 0
   fadeMode: 1
   renderQueue: 5000
---- !u!114 &927157982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 927157977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03d9f0d3ac660f4aa0d11090589fca7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  opacity: 1
-  color: {r: 0, g: 0, b: 0, a: 1}
+  fadeScreens:
+  - {fileID: 1146275421}
+  - {fileID: 133330707}
+  - {fileID: 901845313}
 --- !u!1 &931915535
 GameObject:
   m_ObjectHideFlags: 0
@@ -33676,6 +33697,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1738378566}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1146275421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146275420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1
+  fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
+  fadeOnStart: 1
+  renderQueue: 5000
 --- !u!114 &1146275423
 MonoBehaviour:
   m_ObjectHideFlags: 0

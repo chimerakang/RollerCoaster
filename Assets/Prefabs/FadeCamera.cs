@@ -7,8 +7,9 @@ public class FadeCamera : MonoBehaviour
 	[Range(0f, 1f)]
 	public float opacity = 1;
 	public Color color = Color.black;
+    public bool fadeOnStart = true;
 
-	private Material material;
+    private Material material;
 	private float startTime = 0;
 	private float startOpacity = 1;
 	private int endOpacity = 1;
@@ -38,7 +39,15 @@ public class FadeCamera : MonoBehaviour
 		material = new Material(Shader.Find("Hidden/FadeCameraShader"));
 	}
 
-	void OnRenderImage(RenderTexture source, RenderTexture destination)
+    private void Start()
+    {
+        if( fadeOnStart )
+        {
+            FadeIn();
+        }
+    }
+
+    void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{
 		if (isFading && duration > 0)
 		{

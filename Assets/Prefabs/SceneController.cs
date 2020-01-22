@@ -30,6 +30,8 @@ public class SceneController : MonoBehaviour
 	/// </summary>
 	public int renderQueue = 5000;
 
+    public List<OVRScreenFade> fadeScreens;
+
 	private float uiFadeAlpha = 0;
 
 	private MeshRenderer fadeRenderer;
@@ -42,34 +44,6 @@ public class SceneController : MonoBehaviour
 	/// <summary>
 	/// Automatically starts a fade in
 	/// </summary>
-
-	public void ChangeSceneFade()
-	{
-		StartCoroutine(LoadSceneWithFadeCor(sceneIndex, FadeMode.FadeOut, fadeTime));
-	}
-
-	public IEnumerator LoadSceneWithFadeCor(int sceneBuildIndex, FadeMode fadeMode, float fadeTime)
-	{
-		if (isFading) yield break;
-
-		// Fade Out
-		if (fadeMode == FadeMode.FadeOut || fadeMode == FadeMode.FadeOutIn)
-		{
-			yield return Fade(0, 1);
-		}
-
-		if( sceneBuildIndex >= 0)
-		{
-			var loadAsync = SceneManager.LoadSceneAsync(sceneBuildIndex);
-			yield return new WaitUntil(() => loadAsync.isDone);
-		}
-
-		if (fadeMode == FadeMode.FadeIn || fadeMode == FadeMode.FadeOutIn)
-		{
-			yield return Fade(1, 0);
-		}
-	}
-
 
 	void Start()
 	{
@@ -132,10 +106,38 @@ public class SceneController : MonoBehaviour
 		}
 	}
 
-	/// <summary>
-	/// Start a fade out
-	/// </summary>
-	public void FadeOut()
+    public void ChangeSceneFade()
+    {
+        StartCoroutine(LoadSceneWithFadeCor(sceneIndex, FadeMode.FadeOut, fadeTime));
+    }
+
+    public IEnumerator LoadSceneWithFadeCor(int sceneBuildIndex, FadeMode fadeMode, float fadeTime)
+    {
+        if (isFading) yield break;
+
+        // Fade Out
+        if (fadeMode == FadeMode.FadeOut || fadeMode == FadeMode.FadeOutIn)
+        {
+            yield return Fade(0, 1);
+        }
+
+        if (sceneBuildIndex >= 0)
+        {
+            var loadAsync = SceneManager.LoadSceneAsync(sceneBuildIndex);
+            yield return new WaitUntil(() => loadAsync.isDone);
+        }
+
+        if (fadeMode == FadeMode.FadeIn || fadeMode == FadeMode.FadeOutIn)
+        {
+            yield return Fade(1, 0);
+        }
+    }
+
+
+    /// <summary>
+    /// Start a fade out
+    /// </summary>
+    public void FadeOut()
 	{
 		StartCoroutine(Fade(0, 1));
 	}
@@ -195,30 +197,42 @@ public class SceneController : MonoBehaviour
 	/// </summary>
 	IEnumerator Fade(float startAlpha, float endAlpha)
 	{
-		/*
+        foreach( OVRScreenFade fadeScreen in fadeScreens)
+        {
+            if( fadeMode == FadeMode.FadeOut )
+            {
+                fadeScreen.FadeOut(fadeTime);
+            }
+            else if( fadeMode == FadeMode.FadeIn )
+            {
+                fadeScreen.FadeIn(fadeTime);
+            }
+        }
+
 		float elapsedTime = 0.0f;
 		while (elapsedTime < fadeTime)
 		{
 			elapsedTime += Time.deltaTime;
-			currentAlpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.Clamp01(elapsedTime / fadeTime));
-			SetMaterialAlpha();
+			///currentAlpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.Clamp01(elapsedTime / fadeTime));
+			///SetMaterialAlpha();
 			yield return new WaitForEndOfFrame();
 		}
-		*/
+        /*
 		FadeCamera fadeCamera = gameObject.GetComponent<FadeCamera>();
 		if (fadeCamera != null)
 		{
 			fadeCamera.FadeOut(fadeTime);
 		}
 		yield return new WaitForEndOfFrame();
-	}
+		*/
+    }
 
 
-	/// <summary>
-	/// Update material alpha. UI fade and the current fade due to fade in/out animations (or explicit control)
-	/// both affect the fade. (The max is taken)
-	/// </summary>
-	private void SetMaterialAlpha()
+    /// <summary>
+    /// Update material alpha. UI fade and the current fade due to fade in/out animations (or explicit control)
+    /// both affect the fade. (The max is taken)
+    /// </summary>
+    private void SetMaterialAlpha()
 	{
 		Color color = fadeColor;
 		color.a = Mathf.Max(currentAlpha, uiFadeAlpha);
