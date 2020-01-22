@@ -28671,7 +28671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneIndex: 0
-  fadeTime: 5
+  fadeTime: 7
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeOnStart: 0
   fadeMode: 1
